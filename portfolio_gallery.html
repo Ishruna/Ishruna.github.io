@@ -110,90 +110,101 @@
     }
 	}
 }
-
 #myImg {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
+
+border-radius: 5px;
+cursor: pointer;
+transition: 0.3s;
 }
+
 #myImg:hover {opacity: 0.7;}
+
+
+#myImg2 {
+
+border-radius: 5px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+#myImg2:hover {opacity: 0.7;}
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+padding-top: 100px; /* Location of the box */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
 
 /* Modal Content (image) */
 .modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
+margin: auto;
+display: block;
+width: 80%;
+max-width: 700px;
 }
 
 /* Caption of Modal Image */
 #caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
+margin: auto;
+display: block;
+width: 80%;
+max-width: 700px;
+text-align: center;
+color: #ccc;
+padding: 10px 0;
+height: 150px;
 }
 
 /* Add Animation */
 .modal-content, #caption {  
-  -webkit-animation-name: zoom;
-  -webkit-animation-duration: 0.6s;
-  animation-name: zoom;
-  animation-duration: 0.6s;
+-webkit-animation-name: zoom;
+-webkit-animation-duration: 0.6s;
+animation-name: zoom;
+animation-duration: 0.6s;
 }
 
 @-webkit-keyframes zoom {
-  from {-webkit-transform:scale(0)} 
-  to {-webkit-transform:scale(1)}
+from {-webkit-transform:scale(0)} 
+to {-webkit-transform:scale(1)}
 }
 
 @keyframes zoom {
-  from {transform:scale(0)} 
-  to {transform:scale(1)}
+from {transform:scale(0)} 
+to {transform:scale(1)}
 }
 
 /* The Close Button */
 .close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
+position: absolute;
+top: 15px;
+right: 35px;
+color: #f1f1f1;
+font-size: 40px;
+font-weight: bold;
+transition: 0.3s;
 }
 
 .close:hover,
 .close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
+color: #bbb;
+text-decoration: none;
+cursor: pointer;
 }
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
-  .modal-content {
-    width: 100%;
-  }
+.modal-content {
+  width: 100%;
+}
 }
 </style>
 
@@ -236,6 +247,8 @@
 <!-- Photo Grid -->
 <div class="row"> 
 	<div class="column">
+		<img style="width:28%"  id="myImg" class="img-fluid" src="https://cdn.pixabay.com/photo/2015/06/19/21/24/the-road-815297__340.jpg">
+ 		<img style="width:29%"  id="myImg" class="img-fluid" src="https://image.shutterstock.com/image-photo/mountains-during-sunset-beautiful-natural-260nw-407021107.jpg">
 		<img id="myImg" src="Gallery/Art of Science/Hydra_cross-section.png" style="width:60%;max-width:1200px">
 		<img id="myImg" src="Gallery/Art of Science/final_600dpi_info_2.png" style="width:100%">
 		<img src="Gallery/Art of Science/Symporter_and_Antiporter_in_proximal_renal_tubule.png" style="width:100%">
@@ -285,14 +298,17 @@
 		<img src="Gallery/drawing-painting/church.png" style="width:100%">
 		<img src="Gallery/drawing-painting/shoes in oil.jpeg" style="width:100%">
 </div>
+
 <!-- The Modal -->
 <div id="myModal" class="modal">
 	<span class="close">&times;</span>
-	<img class="modal-content" id="img01">
-	<img class="modal-content" id="img02">
+	<img id="modal-img" class="modal-content"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQS2ol73JZj6-IqypxPZXYS3rRiPwKteoD8vezk9QsRdkjt3jEn&usqp=CAU">
+		
+	
 	<div id="caption"></div>
-</div>	
+</div>
 <!--- -->
+
 <script>
 // Get the elements with class="column"
 var elements = document.getElementsByClassName("column");
@@ -310,14 +326,19 @@ function two() {
 var modal = document.getElementById("myModal");
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg");
-var modalImg = document.getElementById("img01");
+// var img = document.getElementById("myImg");
+var modalImg = document.getElementById("modal-img");
 var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
+
+
+document.addEventListener("click", (e) => {
+  const elem = e.target;
+  if (elem.id==="myImg") {
+    modal.style.display = "block";
+    modalImg.src = elem.dataset.biggerSrc || elem.src;
+    captionText.innerHTML = elem.alt; 
+  }
+})
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
