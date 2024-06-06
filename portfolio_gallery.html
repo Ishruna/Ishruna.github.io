@@ -3,322 +3,213 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-	* {
-	  box-sizing: border-box;
-	}
+  * {
+    box-sizing: border-box;
+  }
 
-	body {
-	  margin: 0;
-	  font-family: Arial, Helvetica, sans-serif;
-	}
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-	.header {
-	  text-align: center;
-	  padding: 32px;
-	}
+  .header {
+    text-align: center;
+    padding: 32px;
+  }
 
-	.row {
-	  display: -ms-flexbox; /* IE 10 */
-	  display: flex;
-	  -ms-flex-wrap: wrap; /* IE 10 */
-	  flex-wrap: wrap;
-	  padding: 0 4px;
-	}
+  .row {
+    display: -ms-flexbox; /* IE 10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE 10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
 
-	/* Create two equal columns that sits next to each other */
-	.column {
-	  -ms-flex: 50%; /* IE 10 */
-	  flex: 50%;
-	  padding: 0 4px;
-	}
+  .column {
+    -ms-flex: 50%; /* IE 10 */
+    flex: 50%;
+    padding: 0 4px;
+  }
 
-	.column img {
+  .column img {
     margin-top: 8px;
     vertical-align: middle;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
   }
-	.mySlides {display:none}
-	.w3-left, .w3-right, .w3-badge {cursor:pointer}
-	.w3-badge {height:13px;width:13px;padding:0}
-	/* Add a card effect for articles */
-	/* Add a gray background color with some padding */
-	.blogbox {
-	  padding: 30px;
-	  background: #f1f1f1;
-	}
-	.card {
-	   background-color: white;
-	   padding: 60px;
-	   margin-top: 20px;
-	}
-	/* Clear floats after the columns */
-	.row:after {
-	  content: "";
-	  display: table;
-	  clear: both;
-	  padding: 60px;
-	  margin-top: 20px;
-	}
 
-	/* Footer */
-	.footer {
-	  padding: 20px;
-	  text-align: center;
-	  background: #ddd;
-	  margin-top: 20px;
-	}
-	.cover-photo {
-		width: 100%;
-		height: auto;
-	}
-	.container {
-	  position: relative;
-	  text-align: center;
-	  color: white;
-	}
-	* {
-	box-sizing: border-box;
-	}
-	.centered {
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  transform: translate(-50%, -50%);
-	}
-	.bottom {
-	  position: absolute;
-	  top: 90%;
-	  left: 50%;
-	  transform: translate(-50%, -50%);
-	}
-	.column {
-	  float: none;
-	  width: 33.33%;
-	  padding: 10px; 
-	}
-	/* Clear floats after the columns */
-	.row:after {
-	  content: "";
-	  display: table;
-	  clear: both;
-	}
-	.center {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-		width: 50%;
-	}
-	@media screen and (max-width: 600px) {
-    .column {
-		width: 100%;
-		float:none;
-		padding: 10px;
+  .btn {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .btn:hover {
+    background-color: #ddd;
+  }
+
+  .btn.active {
+    background-color: #666;
+    color: white;
+  }
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+
+  .modal-content, #caption {  
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+
+  @-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+  }
+
+  @keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  @media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
     }
-	}
-}
+  }
 
-#myImg {
-
-border-radius: 5px;
-cursor: pointer;
-transition: 0.3s;
-}
-
-#myImg:hover {opacity: 0.7;}
-
-
-#myImg2 {
-
-border-radius: 5px;
-cursor: pointer;
-transition: 0.3s;
-}
-
-#myImg2:hover {opacity: 0.7;}
-
-/* The Modal (background) */
-.modal {
-display: none; /* Hidden by default */
-position: fixed; /* Stay in place */
-z-index: 1; /* Sit on top */
-padding-top: 100px; /* Location of the box */
-left: 0;
-top: 0;
-width: 100%; /* Full width */
-height: 100%; /* Full height */
-overflow: auto; /* Enable scroll if needed */
-background-color: rgb(0,0,0); /* Fallback color */
-background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-}
-
-/* Modal Content (image) */
-.modal-content {
-margin: auto;
-display: block;
-width: 80%;
-max-width: 700px;
-}
-
-/* Caption of Modal Image */
-#caption {
-margin: auto;
-display: block;
-width: 80%;
-max-width: 700px;
-text-align: center;
-color: #ccc;
-padding: 10px 0;
-height: 150px;
-}
-
-/* Add Animation */
-.modal-content, #caption {  
--webkit-animation-name: zoom;
--webkit-animation-duration: 0.6s;
-animation-name: zoom;
-animation-duration: 0.6s;
-}
-
-@-webkit-keyframes zoom {
-from {-webkit-transform:scale(0)} 
-to {-webkit-transform:scale(1)}
-}
-
-@keyframes zoom {
-from {transform:scale(0)} 
-to {transform:scale(1)}
-}
-
-/* The Close Button */
-.close {
-position: absolute;
-top: 15px;
-right: 35px;
-color: #f1f1f1;
-font-size: 40px;
-font-weight: bold;
-transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-color: #bbb;
-text-decoration: none;
-cursor: pointer;
-}
-
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-.modal-content {
-  width: 100%;
-}
-}
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      float: none;
+      padding: 10px;
+    }
+  }
 </style>
-
-<!-- %%%%%%%%%%%%%%%%%%%%%% LOADING THE STYLE SHEET %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<link rel="stylesheet" href="style.css">
-<script src="https://www.w3schools.com/lib/w3.js"></script>
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%% MAIN BODY OF THE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	<!-- wc-wide: letter spacing 4px -->
-	<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	<!-- %%%%%%%%%%%%%%%%%%%%%% NAVIGATION BAR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	<div class="w3-top w3-bar w3-white w3-wide w3-padding w3-card">
-		<a href="index.html" class="w3-bar-item w3-button"><b>Ishruna</b> Muniyat</a>
-		
-		<!-- Float links to the right. Hide them on small screens -->
-		<div class="w3-right w3-hide-small">
-			<a href="index.html#home" class="w3-bar-item w3-button">Home</a>
-			<a href="index.html#about" class="w3-bar-item w3-button">About</a>
-			<a href="portfolio_gallery.html" class="w3-bar-item w3-button">Portfolio</a>
-			<a href="blog.html" class="w3-bar-item w3-button">Blog</a>
-			<a href="index.html#contact" class="w3-bar-item w3-button">Contact</a>
-		</div>
-	</div>
-
-
-    <div class="container" style="padding-top: 55px;">
-        <img src="Images/waves.png" style="width:100%;">
-                <!--- <div class="centered cover"> Welcome to my personal blog </div> -->
-    </div>
-
-	<div class="w3-center" style="padding-top: 25px;">
-			<h1 class="w3-wide"> Scientific illustrations, infographics, and graphics design </h1>
-	</div>
 </head>
-<!--- End of Header -->
 <body>
+
+<!-- Header -->
+<div class="header" id="myHeader">
+  <h1>Image Grid</h1>
+  <p>Click on the buttons to change the grid view.</p>
+  <button class="btn" onclick="one()">1</button>
+  <button class="btn active" onclick="two()">2</button>
+  <button class="btn" onclick="four()">4</button>
+</div>
+
 <!-- Photo Grid -->
 <div class="row"> 
-	<div class="column">
-		<img style="width:28%"  id="myImg" class="img-fluid" src="https://cdn.pixabay.com/photo/2015/06/19/21/24/the-road-815297__340.jpg">
- 		<img style="width:29%"  id="myImg" class="img-fluid" src="https://image.shutterstock.com/image-photo/mountains-during-sunset-beautiful-natural-260nw-407021107.jpg">
-		<img id="myImg" src="Gallery/Art of Science/Hydra_cross-section.png" style="width:60%;max-width:1200px">
-		<img id="myImg" src="Gallery/Art of Science/final_600dpi_info_2.png" style="width:100%">
-		<img src="Gallery/Art of Science/Symporter_and_Antiporter_in_proximal_renal_tubule.png" style="width:100%">
-		<img src="Gallery/Art of Science/PROTAC.PNG" style="width:100%">
-		<img src="Gallery/Art of Science/protac-pocket.png" style="width:100%">
-		<img src="Gallery/Art of Science/folding.png" style="width:100%">
-		<img src="Gallery/Art of Science/protein folding.PNG" style="width:100%">
-		<img src="Gallery/Art of Science/Pi-day_Mailchimp Graphic.png" style="width:100%">
-		<img src="Gallery/Art of Science/sampling-compare.png" style="width:100%">
-		<img src="Gallery/Art of Science/sampling-compare-2.png" style="width:100%">
-		<img src="Gallery/Art of Science/McNally-Callysto-Lunch_and_Learn_Poster-04-04.png" style="width:100%">
-		<img src="Gallery/Art of Science/Digital_Age_Hackathon_Poster.png" style="width:100%">
-		<img src="Gallery/Art of Science/Callysto_Innovate_Canmore_Hackathon_V8.png" style="width:100%">
-		<img src="Gallery/Art of Science/Callysto_hackathon_FortMcMurray.png" style="width:100%">
-		<img src="Gallery/Art of Science/Computational_thinking.png" style="width:100%">
-		<img src="Gallery/Art of Science/promo-sticker.png" style="width:100%">
-		<img src="Gallery/Art of Science/water-quality.png" style="width:100%">
-		<img src="Gallery/Art of Science/teachers-day.png" style="width:100%">
-		<img src="Gallery/Art of Science/world teachers day-02.png" style="width:100%">
-		<img src="Gallery/Art of Science/prot-g.png" style="width:100%">
-		<img src="Gallery/Art of Science//dihedral-butane.png" style="width:100%">
-		<img src="Gallery/Art of Science/dof.png" style="width:100%">
-		
-	</div>
-	
-	<div class="column">
-		<img src="Gallery/Art of Science/final_cover_v4.png" style="width:100%">
-		<img src="Gallery/Art of Science/proximal_Renal_tubule.png" style="width:100%">
-		<img src="Gallery/Art of Science/poster_2.png" style="width:100%">
-	</div>
+  <div class="column">
+    <img src="Gallery/Art of Science/Hydra_cross-section.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/final_600dpi_info_2.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/Symporter_and_Antiporter_in_proximal_renal_tubule.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/PROTAC.PNG" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/protac-pocket.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/folding.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/protein folding.PNG" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/Pi-day_Mailchimp Graphic.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/sampling-compare.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/sampling-compare-2.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/McNally-Callysto-Lunch_and_Learn_Poster-04-04.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/Digital_Age_Hackathon_Poster.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/Callysto_Innovate_Canmore_Hackathon_V8.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/Callysto_hackathon_FortMcMurray.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/Computational_thinking.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/promo-sticker.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/water-quality.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/teachers-day.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/world teachers day-02.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/prot-g.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/dihedral-butane.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/dof.png" style="width:100%" onclick="openModal(this)">
+  </div>
+  
+  <div class="column">
+    <img src="Gallery/Art of Science/final_cover_v4.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/proximal_Renal_tubule.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/Art of Science/poster_2.png" style="width:100%" onclick="openModal(this)">
+  </div>
 </div>
-<!-- Drawing/painting Grid -->
+
+<!-- Drawings and Paintings Grid -->
 <div class="w3-center" style="padding-top: 25px;">
-	<h1 class="w3-wide"> Drawings and paintings </h1>
+  <h1 class="w3-wide">Drawings and Paintings</h1>
 </div>
-<!-- Photo Grid -->
 <div class="row">
-	<div class="column">
-		<img style="width:80%"  id="myImg" class="img-fluid" src="Gallery/drawing-painting/Torso in graphite.jpg">
-		<img style="width:80%"  id="myImg" class="img-fluid" src="Gallery/drawing-painting/Hand in graphite.jpg">
-		<img style="width:80%"  id="myImg" class="img-fluid" src="Gallery/drawing-painting/bird.png" style="width:100%">
-		<img style="width:80%"  id="myImg" class="img-fluid" src="Gallery/drawing-painting/skull.jpg" style="width:100%">
-		<img style="width:80%"  id="myImg" class="img-fluid" src="Gallery/drawing-painting/Grapes colours pencils.png" style="width:100%">
-		<img style="width:80%"  id="myImg" class="img-fluid" src="Gallery/drawing-painting/Iguana pastels.jpg" style="width:100%">
-		<img style="width:80%"  id="myImg" class="img-fluid" src="Gallery/drawing-painting/portrait in charboal.jpg" style="width:100%">
-		<img style="width:80%"  id="myImg" class="img-fluid" src="Gallery/drawing-painting/portrait-kate.png" style="width:100%">
-		<img style="width:80%"  id="myImg" class="img-fluid" src="Gallery/drawing-painting/8.. portrait_of_Kate_Moss.png" style="width:100%">
-		<img style="width:80%"  id="myImg" class="img-fluid" src="Gallery/drawing-painting/church.png" style="width:100%">
-		<img style="width:80%"  id="myImg" class="img-fluid" src="Gallery/drawing-painting/shoes in oil.jpeg" style="width:100%">
-	</div>
+  <div class="column">
+    <img src="Gallery/drawing-painting/Torso in graphite.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/drawing-painting/Hand in graphite.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/drawing-painting/bird.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/drawing-painting/skull.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/drawing-painting/Grapes colours pencils.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/drawing-painting/Iguana pastels.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/drawing-painting/portrait in charboal.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/drawing-painting/portrait-kate.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/drawing-painting/8.. portrait_of_Kate_Moss.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/drawing-painting/church.png" style="width:100%" onclick="openModal(this)">
+    <img src="Gallery/drawing-painting/shoes in oil.jpeg" style="width:100%" onclick="openModal(this)">
+  </div>
 </div>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-	<span class="close">&times;</span>
-	<img id="modal-img" class="modal-content"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQS2ol73JZj6-IqypxPZXYS3rRiPwKteoD8vezk9QsRdkjt3jEn&usqp=CAU">
-		
-	
-	<div id="caption"></div>
+  <span class="close">&times;</span>
+  <img id="modal-img" class="modal-content" src="">
+  <div id="caption"></div>
 </div>
-<!--- -->
 
 <script>
 // Get the elements with class="column"
@@ -326,6 +217,15 @@ var elements = document.getElementsByClassName("column");
 
 // Declare a loop variable
 var i;
+
+// Full-width images
+function one() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.msFlex = "100%";  // IE10
+    elements[i].style.flex = "100%";
+  }
+}
+
 // Two images side by side
 function two() {
   for (i = 0; i < elements.length; i++) {
@@ -333,23 +233,38 @@ function two() {
     elements[i].style.flex = "50%";
   }
 }
+
+// Four images side by side
+function four() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.msFlex = "25%";  // IE10
+    elements[i].style.flex = "25%";
+  }
+}
+
+// Add active class to the current button (highlight it)
+var header = document.getElementById("myHeader");
+var btns = header.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
 // Get the modal
 var modal = document.getElementById("myModal");
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
-// var img = document.getElementById("myImg");
 var modalImg = document.getElementById("modal-img");
 var captionText = document.getElementById("caption");
 
-
-document.addEventListener("click", (e) => {
-  const elem = e.target;
-  if (elem.id==="myImg") {
-    modal.style.display = "block";
-    modalImg.src = elem.dataset.biggerSrc || elem.src;
-    captionText.innerHTML = elem.alt; 
-  }
-})
+function openModal(elem) {
+  modal.style.display = "block";
+  modalImg.src = elem.src;
+  captionText.innerHTML = elem.alt; 
+}
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -360,12 +275,10 @@ span.onclick = function() {
 }
 </script>
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%% FOOTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- Footer -->
 <div class="w3-white w3-wide w3-padding">
-        <!-- background-color:#dde6e8; -->
-        <p class="w3-center w3-large w3-padding-32" style="font-size:10px"> &copy 2022 Mir Ishruna Muniyat All rights reserved.</p>
+  <p class="w3-center w3-large w3-padding-32" style="font-size:10px"> &copy 2022 Mir Ishruna Muniyat All rights reserved.</p>
 </div>
+
 </body>
 </html>
