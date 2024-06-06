@@ -153,13 +153,15 @@ background-color: rgb(0,0,0); /* Fallback color */
 background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
 
-/* Modal Content (image) */
 .modal-content {
-margin: auto;
-display: block;
-width: 80%;
-max-width: 700px;
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  max-height: 80vh; /* Added to fit the image within the viewport height */
+  object-fit: contain; /* Ensures the image scales correctly */
 }
+
 
 /* Caption of Modal Image */
 #caption {
