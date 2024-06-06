@@ -32,13 +32,14 @@
 	  padding: 0 4px;
 	}
 
-  .column img {
-    margin-top: 8px;
-    vertical-align: middle;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+	.column img {
+		margin-top: 8px;
+		vertical-align: middle;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		cursor: pointer; /* Change pointer to hand icon */
+	}
 	.mySlides {display:none}
 	.w3-left, .w3-right, .w3-badge {cursor:pointer}
 	.w3-badge {height:13px;width:13px;padding:0}
@@ -126,8 +127,6 @@ cursor: pointer;
 transition: 0.3s;
 }
 
-#myImg:hover {opacity: 0.7;}
-
 
 #myImg2 {
 
@@ -136,7 +135,10 @@ cursor: pointer;
 transition: 0.3s;
 }
 
-#myImg2:hover {opacity: 0.7;}
+#myImg:hover, #myImg2:hover {
+  opacity: 0.7;
+  cursor: pointer; /* Change pointer to hand icon */
+}
 
 /* The Modal (background) */
 .modal {
@@ -250,7 +252,7 @@ cursor: pointer;
     </div>
 
 	<div class="w3-center" style="padding-top: 25px;">
-			<h1 class="w3-wide"> Scientific illustrations, infographics, and graphics design </h1>
+			<h1 class="w3-wide"> Science illustrations, infographics, and graphics design </h1>
 	</div>
 </head>
 <!--- End of Header -->
