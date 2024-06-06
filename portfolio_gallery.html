@@ -95,10 +95,10 @@
 	  transform: translate(-50%, -50%);
 	}
 	.column {
-	  float: none;
-	  width: 33.33%;
-	  padding: 10px; 
-	}
+		-ms-flex: 50%; /* IE 10 */
+		flex: 50%;
+		padding: 0 4px;
+		}
 	/* Clear floats after the columns */
 	.row:after {
 	  content: "";
@@ -262,8 +262,13 @@ cursor: pointer;
 </head>
 <!--- End of Header -->
 <body>
+
+
+<div class="w3-center" style="padding-top: 25px;">
+	<h1 class="w3-wide"> Science illustrations, infographics, and graphics design </h1>
+</div>
+
 <!-- Photo Grid -->
-<h1 class="w3-wide">Science illustrations, infographics, and graphics design</h1>
 <div class="row"> 
 	<div class="column">
 		<img id="myImg" class="img-fluid"  src="Gallery/Art of Science/Hydra_cross-section.png" style="width:80%">
